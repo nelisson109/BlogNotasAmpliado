@@ -12,39 +12,38 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Spinner spinComentarios;
     private MyOpenHelper db;
-    private ArrayAdapter spinnerAdapter;
-    private ArrayList<Comentario> lista;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        lista = db.getComments();
+        db = new MyOpenHelper(this);
 
     }
 
     public void crear(View v){
-        Intent intent = new Intent (v.getContext(), CrearNota.class);
+        Intent intent = new Intent (this, CrearNota.class);
         startActivity(intent);
     }
 
     public void ver(View v){
-        Intent intent = new Intent (v.getContext(), VerNota.class);
+        Intent intent = new Intent (this, VerNota.class);
         startActivity(intent);
     }
 
     public void eliminar(View v){
-        Intent intent = new Intent (v.getContext(), EliminarNota.class);
+        Intent intent = new Intent (this, EliminarNota.class);
         startActivity(intent);
     }
 
-    public ArrayList<Comentario> getLista() {
-        return lista;
+    public MyOpenHelper getDb() {
+        return db;
     }
 
-    public void setLista(ArrayList<Comentario> lista) {
-        this.lista = lista;
+    public void setDb(MyOpenHelper db) {
+        this.db = db;
     }
+
 }
