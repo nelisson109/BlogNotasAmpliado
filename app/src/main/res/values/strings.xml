@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">BlogNotasAmpliado</string>
+    <string name="btnCrear">Crear Nota</string>
+    <string name="btnVer">Ver Nota</string>
+    <string name="btnEliminar">Eliminar Nota</string>
+    <string name="titulo">Introduce titulo para el comentario</string>
+    <string name="contenido">Escriba el comentario</string>
+
+</resources>
