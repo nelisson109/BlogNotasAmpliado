@@ -2,6 +2,7 @@ package com.example.blognotasampliado;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -9,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.app.AlertDialog;
 
 import java.util.ArrayList;
 
@@ -44,6 +46,13 @@ public class EliminarNota extends MainActivity implements AdapterView.OnItemSele
         txtNombre.setEnabled(false);
         txtComentario.setEnabled(false);
 
+        btnEliminar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                eliminar();
+            }
+        });
+
     }
 
     public void ver(View v){
@@ -53,9 +62,19 @@ public class EliminarNota extends MainActivity implements AdapterView.OnItemSele
         }
     }
 
-    public void eliminar(View v){
+    public void aceptar(){
+        db.borrar(c.getId());
+        lista = db.getComments();
+        spinnerAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, lista);
+        spinComentarios.setAdapter(spinnerAdapter);
+        txtNombre.setText("");
+        txtComentario.setText("");
+        c=null;
+    }
+
+    public void eliminar (){
         //Si hay algun comentario seleccionado lo borramos de la base de datos y actualizamos el spinner
-        if(c!=null) {
+     /*   if(c!=null) {
             db.borrar(c.getId());
             lista = db.getComments();
             spinnerAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, lista);
@@ -65,7 +84,24 @@ public class EliminarNota extends MainActivity implements AdapterView.OnItemSele
             txtComentario.setText("");
             //Eliminamos el Comentario actual puesto que ya no existe en base de datos
             c=null;
-        }
+        }*/
+        AlertDialog.Builder alerta = new AlertDialog.Builder(this);
+        alerta.setTitle("CONFIRMACIÓN del borrado");
+        alerta.setMessage("¿Quieres borrar la NOTA?");
+        alerta.setCancelable(false);
+        alerta.setPositiveButton("SI", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogo, int id) {
+                aceptar();
+            }
+        });
+        alerta.setNegativeButton("NO",new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogo, int id) {
+                finish();
+            }
+        });
+        alerta.setNegativeButton("NO",null);
+        alerta.create();
+        alerta.show();
     }
 
     @Override

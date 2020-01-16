@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.app.AlertDialog;
 
 import java.util.ArrayList;
 
@@ -37,5 +38,12 @@ public class CrearNota extends MainActivity {
         //Limpiamos el formulario
         editNombre.setText("");
         editComentario.setText("");
+
+        AlertDialog.Builder alerta = new AlertDialog.Builder(this);
+        alerta.setTitle("Creación de Nota");
+        alerta.setMessage("La nota ha sido creada correctamente");
+        alerta.setPositiveButton("ACEPTAR",null);
+        alerta.create();
+        alerta.show();
     }
 }
