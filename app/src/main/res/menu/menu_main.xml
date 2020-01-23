@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/crearNota"
+        android:icon="@drawable/ic_favorite_black_48dp"
+        android:title="@string/crearNota"
+      />
+    <item android:id="@+id/verNota"
+        android:title="@string/verNota"
+        />
+    <item android:id="@+id/eliminarNota"
+        android:icon="@drawable/ic_favorite_black_48dp"
+        android:title="@string/eliminarNota"
+        />
+
+</menu>

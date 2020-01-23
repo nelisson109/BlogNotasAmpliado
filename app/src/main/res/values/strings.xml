@@ -5,5 +5,8 @@
     <string name="btnEliminar">Eliminar Nota</string>
     <string name="titulo">Introduce titulo para el comentario</string>
     <string name="contenido">Escriba el comentario</string>
+    <string name="crearNota">Crear Nota</string>
+    <string name="verNota">Ver Nota</string>
+    <string name="eliminarNota">Eliminar Nota</string>
 
 </resources>
